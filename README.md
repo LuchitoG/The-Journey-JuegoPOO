@@ -6,3 +6,4 @@ El juego se trata de ____________
 
 Giovannini Luciano
 Gil Luca
+Flores León
