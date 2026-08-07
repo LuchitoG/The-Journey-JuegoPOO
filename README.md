@@ -5,3 +5,4 @@ El juego se trata de ____________
 ## Integrantes
 
 Giovannini Luciano
+Gil Luca
