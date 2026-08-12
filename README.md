@@ -5,7 +5,7 @@
 - Giovannini Luciano Gabriel
 - Gil Luca Agustín
 - Flores León Emiliano
-- 
+- Saucedo Ciro
 
 ### Descripción del Juego
 
