@@ -13,15 +13,16 @@ import javax.swing.Timer;
 
 public class VistaJuego extends JPanel implements ActionListener {
 
-    // posicion y tamaño del cuadrado
-    private int x = 100;
-    private int y = 100;
-    private final int tamano = 50;
+// posicion y tamaño del cuadrado
+private int x = 100;
+private int y = 100;
+private final int tamano = 50;
 
-
-private Personaje jugador; // instancia del jugador
-private Timer timer;
+// instancias de las clases que se van a usar
+private Personaje jugador; 
 private ControladorTeclado teclado;
+private Timer timer;
+
 
 
 public VistaJuego(Personaje jugador, ControladorTeclado teclado) {
@@ -32,7 +33,7 @@ public VistaJuego(Personaje jugador, ControladorTeclado teclado) {
     addKeyListener(teclado);
 
     timer = new Timer(16, this); // (1000ms / 60 ≈ 16ms)
-    timer.start();
+    timer.start(); // el timer lo que hace es checkear a cada rato si se esta realizando alguna accion del usuario
     
 }
 
@@ -42,7 +43,7 @@ protected void paintComponent(Graphics g) {
     g.setColor(Color.RED); //dibujo el cuadraddo
     g.fillRect(x, y, tamano, tamano);
 }
-// todo esto es lo que hace que se mueva el cuadrado, se puede cambiar por lo que haga el personaje
+// todo esto es lo que hace que se mueva el cuadrado, se puede cambiar por lo que haga el personaje 
 @Override
 public void actionPerformed(ActionEvent e) {
     int vel = jugador.getVelocidad();
