@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.ControladorMenu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,8 +9,8 @@ import javax.swing.*;
 public class VistaPrincipal extends JFrame{
 
     public static JPanel panelContenedor;
-    //private PanelMenu panelMenu;
-    //private ControladorMenu controladorMenu;
+    private PanelMenu panelMenu;
+    private ControladorMenu controladorMenu;
 
     public VistaPrincipal() {
         setTitle("The Journey");
@@ -17,14 +18,14 @@ public class VistaPrincipal extends JFrame{
         setResizable(false);
 
         panelContenedor = new JPanel();
-        panelContenedor.setPreferredSize(new Dimension(1200,960));
+        panelContenedor.setPreferredSize(new Dimension(1500,960));
         panelContenedor.setLayout(new BorderLayout());
         panelContenedor.setBackground(Color.BLACK);
         this.add(panelContenedor);
         
 
-        //panelMenu = new PanelMenu();
-        //controladorMenu = new ControladorMenu(panelMenu);
+        panelMenu = new PanelMenu();
+        controladorMenu = new ControladorMenu(panelMenu);
 
 
 
