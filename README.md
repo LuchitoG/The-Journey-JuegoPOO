@@ -86,3 +86,9 @@ Habitación bonus (Es una habitacion llena de monedas)
 
 **Ranking**
 Se va a basar en que tan rápido el jugador pase el juego, cuantos enemigos mataste y cuantas monedas agarraste.
+
+**Maqueta Habitacion**
+<img width="1152" height="648" alt="TheJourney_MaquetaHABITACION" src="https://github.com/user-attachments/assets/49b21716-eb46-40f2-ac76-13c794bf56a0" />
+
+**Maqueta Shop**
+<img width="1152" height="648" alt="TheJourney_MaquetaSHOP" src="https://github.com/user-attachments/assets/c24138cf-6eb6-460b-a19b-14100e7d02de" />
