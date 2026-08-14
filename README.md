@@ -127,5 +127,6 @@ El ranking se basará en:
 
 ### Menu Principal y Primera habitación
 <img width="1920" height="1080" alt="menuPrincipal_primeraHabitacion" src="https://github.com/user-attachments/assets/e2b0d008-5300-4b55-a544-19369844b78b" />
+
 ### Soundtrack y efectos de sonido (FX)
-El soundtrack y efectos de sonido del juego será compuesto y producido por Flores León Emiliano.
+Será compuesto y producido por Flores León Emiliano.
