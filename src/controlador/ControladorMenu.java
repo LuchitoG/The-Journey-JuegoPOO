@@ -23,7 +23,6 @@ public class ControladorMenu {
 
     public ControladorMenu(PanelMenu panelMenu) {
         this.panelMenu = panelMenu;
-        this.panelMenu.getBotonJugar().addActionListener(e -> new ControladorJuego());
         VistaPrincipal.setPanelContenedor(panelMenu);
 
         this.panelMenu.getBotonJugar().addActionListener(e -> {

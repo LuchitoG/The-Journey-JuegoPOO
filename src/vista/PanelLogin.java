@@ -50,4 +50,8 @@ public class PanelLogin extends JPanel{
         this.add(Box.createVerticalGlue());
     }
 
+    public JButton getBotonJugar(){
+        return this.botonJugar;
+    }
+
 }

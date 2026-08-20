@@ -22,6 +22,18 @@ public class ControladorLogin {
         dialogo.add(panelLogin);
         dialogo.setLocationRelativeTo(null);
         dialogo.setResizable(false);
-        dialogo.setVisible(true);
+
+
+        this.panelLogin.getBotonJugar().addActionListener(e -> {
+            System.out.println("Boton jugar");
+            dialogo.dispose();
+            new ControladorJuego();
+        }
+        );
+
+
+        dialogo.setVisible(true); // si o si va a lo ultimo
+        
+        
     }
 }
