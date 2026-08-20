@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.Box;
@@ -11,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PanelMenu extends JPanel{
+
+    JButton botonJugar, botonRanking, botonOpciones, botonCreditos;
     
     public PanelMenu() {
         this.setLayout(new GridLayout(1, 2));
@@ -28,14 +31,34 @@ public class PanelMenu extends JPanel{
 
         JLabel labelTitulo = new JLabel("The Journey");
         labelTitulo.setForeground(Color.WHITE);
-        labelTitulo.setFont(new Font("Monospaced", Font.BOLD, 58));
+        labelTitulo.setFont(new Font("Monospaced", Font.BOLD, 80));
         labelTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        JButton botonJugar = new JButton("Jugar");
-        JButton botonRanking = new JButton("Ranking");
-        JButton botonOpciones = new JButton("Opciones");
-        JButton botonCreditos = new JButton("Creditos");
-        
+
+        Dimension dimensionBotones = new Dimension(400, 60);
+        this.botonJugar = new JButton("Jugar");
+        botonJugar.setFont(new Font("Monospaced", Font.BOLD, 32));
+        botonJugar.setPreferredSize(dimensionBotones);
+        botonJugar.setMinimumSize(dimensionBotones);
+        botonJugar.setMaximumSize(dimensionBotones);
+
+        this.botonRanking = new JButton("Ranking");
+        botonRanking.setFont(new Font("Monospaced", Font.BOLD, 32));
+        botonRanking.setPreferredSize(dimensionBotones);
+        botonRanking.setMinimumSize(dimensionBotones);
+        botonRanking.setMaximumSize(dimensionBotones);
+
+        this.botonOpciones = new JButton("Opciones");
+        botonOpciones.setFont(new Font("Monospaced", Font.BOLD, 32));
+        botonOpciones.setPreferredSize(dimensionBotones);
+        botonOpciones.setMinimumSize(dimensionBotones);
+        botonOpciones.setMaximumSize(dimensionBotones);
+
+        this.botonCreditos = new JButton("Creditos");
+        botonCreditos.setFont(new Font("Monospaced", Font.BOLD, 32));
+        botonCreditos.setPreferredSize(dimensionBotones);
+        botonCreditos.setMinimumSize(dimensionBotones);
+        botonCreditos.setMaximumSize(dimensionBotones);
 
         panelDerecho.add(Box.createVerticalGlue());
         panelDerecho.add(labelTitulo);
@@ -55,4 +78,16 @@ public class PanelMenu extends JPanel{
         this.add(panelDerecho);
     }
 
+    public JButton getBotonJugar(){
+        return this.botonJugar;
+    }
+    public JButton getBotonRanking(){
+        return this.botonRanking;
+    }
+    public JButton getBotonOpciones(){
+        return this.botonOpciones;
+    }
+    public JButton getBotonCreditos(){
+        return this.botonCreditos;
+    }
 }
