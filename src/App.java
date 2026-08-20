@@ -6,7 +6,7 @@ public class App {
         System.out.println("Hello, World!");
 
         SwingUtilities.invokeLater(() -> {
-            ControladorVistaPrincipal controladorVistaPrincipal = new ControladorVistaPrincipal(); 
+            ControladorVistaPrincipal controladorVistaPrincipal = new ControladorVistaPrincipal();
         });
 
     }

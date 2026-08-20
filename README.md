@@ -2,87 +2,131 @@
 
 ## 1. Integrantes del Equipo
 
-- Giovannini Luciano Gabriel
-- Gil Luca Agustín
-- Flores León Emiliano
-- Saucedo Ciro
+* Giovannini Luciano Gabriel
+* Gil Luca Agustín
+* Flores León Emiliano
+* Saucedo Ciro
 
-### Descripción del Juego
+## 2. Descripción del Juego
 
-Queremos desarrollar un juego estilo Roguelike, cuyo titulo es: The Journey.
-El juego se basa en un Hechizero (Jugador) que entra a una mazmorra en busca de derrotar a el jefe final llamado "x", el camino se va encontrando con diversos obstaculos, enemigos y equipamiento para facilitar el camino.
+Queremos desarrollar un juego estilo Roguelike, cuyo título es: The Journey.
 
-### Objetivo del Juego - Checklist de features
+El juego se basa en un Hechicero (Jugador) que entra a una mazmorra en busca de derrotar al jefe final. En el camino se encontrará con diversos obstáculos, enemigos y equipamiento para facilitar su avance.
 
-**MUNDO**
+## 3. Objetivo del Juego - Checklist de Features
 
-**3 niveles**
+### MUNDO
 
-**habitaciones aleatorias** (Estas habitaciones serán elegidas aleatoriamente de una lista de   habitaciones presets, se planean entre 5 y 10 habitaciones.)
+* 3 niveles.
+* Habitaciones aleatorias: estas habitaciones serán elegidas aleatoriamente de una lista de habitaciones prediseñadas. Se planean entre 5 y 10 habitaciones.
+* Puertas: las puertas permanecerán cerradas si hay enemigos en la habitación.
+* 1 jefe, accesible al conseguir las 3 llaves de oro.
 
-**Puertas** (Las puertas permaneceran cerradas si hay enemigos en la habitacion)
+### JUGADOR
 
-**1 habitación bonus por nivel** - Recompensa de monedas 
+* Vida.
+* Daño.
+* Velocidad.
+* Firerate.
+* Maná.
 
-**3 jefes** - 1 por nivel
+### ENEMIGOS
 
+**Cangrejo**
 
-**JUGADOR**
-Vida
-Daño
-Velocidad
-Firerate 
+* Persigue al jugador.
+* Es rápido.
+* Tiene 1 HP.
+* No puede atravesar obstáculos.
 
+**Murciélago**
 
-**ENEMIGOS**
-Cangrejo (Persigue al jugador, son rápidas, no escalan obstáculos ni nada, solo son molestas)
+* Movimiento simple.
+* Al tocar al jugador le causa daño.
+* Puede volar sobre todos los obstáculos.
 
-Murcielago Movimiento simple, te toca y te hace daño, vuelan sobre todos los obstaculos.
+**Cangrejo Kamikaze**
 
-angrejo Kamikaze
-Persigue y explota, daño de area a todas las entidades, solo tiene solo 1 hp, son pequeños.
+* Persigue al jugador y explota.
+* Causa daño de área a todas las entidades cercanas.
+* Tiene 1 HP.
+* Es de pequeño tamaño.
 
-Gigante
-Lento + mucha vida, te golpea
+**Gigante**
 
-TipoCañón
-Será un ojo anclado al piso, dispara en la dirección deljugador en ese instante
+* Es lento.
+* Tiene mucha vida.
+* Causa daño al contacto con el jugador.
 
-// Cada enemigo tiene un 25% de droppear un item (a excepcion de los kamikazes), la probabilidad es alta para que los profes puedan ver todos los items.
+**Ojo Cañón**
 
- **ITEMS / DROPS**
-Botiquín (cura 2 corazones)
-+Daño  (aumentar daño de la bala, aumentar tamaño)
-+Velocidad (Aumenta la velocidad de movimiento del jugador)
-+Cadencia (Aumenta el firerate)
-+Vida máxima (Aumenta la salud maxima (más corazónes))
+* Será un ojo anclado al piso.
+* Dispara en la dirección del jugador en ese instante.
 
-//Como se mencionó anteriormente, tienen 25% de chances de aparecer con cada enemigo que mates
+> Cada enemigo tendrá un 25% de probabilidad de soltar un Item al ser derrotado, a excepción de los enemigos kamikaze. La probabilidad es relativamente alta para que los profesores puedan observar todos los tipos de objetos durante las pruebas.
 
- **COMBATE**
-Proyectiles (bolas de fuego del pj principal, balas de los enemigos)
-Colisiones (Daño al contacto con enemigos o se "rompe" la bala cuando choca con alguna hitbox)
+### ITEMS / DROPS
 
+* Botiquín: recupera 2 corazones.
+* +Daño: aumenta el daño de la bala y su tamaño.
+* +Velocidad: aumenta la velocidad de movimiento del jugador.
+* +Cadencia: aumenta el firerate.
+* +Vida máxima: aumenta la salud máxima del jugador.
+* Llave de oro: permite abrir la puerta que conduce al jefe final.
 
-**OBSTÁCULOS**
-Pinchos (Si el jugador pisa los Pinchos recibe daño)
-Piedras (Bloquean el paso, se pueden romper con bombas o cangrejos kamikaze)
-Agua / Hueco en el piso (funcionan como la piedra, con la diferencia de que no se pueden romper)
+### COMBATE
 
+* Proyectiles: Hechizo de Hielo del personaje principal y balas de los enemigos.
+* Colisiones: Los proyectiles causan daño al entrar en contacto con los enemigos o se destruyen al colisionar con determinadas hitboxes.
 
-**SHOP**
-Tienen una chance de 35% en aparecer por piso.
-Comprar items
+### OBSTÁCULOS
 
-// Los items muestran el precio y una breve descripción de que hace el item, el jugador debará pasar por encima para dicha mecanica.
+**Pinchos**
 
-// Lo dejaremos para lo último, porque pensamos que nos podria atrasar mucho.
+* Si el jugador pisa los pinchos, recibe daño.
 
+**Piedras**
 
-**Recompenzas**
-Completar habitación (chance de 1/3, ya que la habitacion puede droppear monedas, una bomba o nada )
-Habitación bonus (Es una habitacion llena de monedas)
- 
+* Bloquean el paso.
+* Se pueden romper con bombas o mediante la explosión de los cangrejos kamikaze.
 
-**Ranking**
-Se va a basar en que tan rápido el jugador pase el juego, cuantos enemigos mataste y cuantas monedas agarraste.
+**Agua / Hueco en el piso**
+
+* Funcionan como las piedras, con la diferencia de que no se pueden romper.
+
+### SHOP
+
+* Tiene una probabilidad del 35% de aparecer.
+* Permite comprar Items.
+
+> Los Items muestran el precio y una breve descripción de lo que hace. El jugador deberá pasar por encima del objeto para realizar dicha mecánica.
+
+> El sistema de tienda se dejará para lo último, porque consideramos que podría atrasar el desarrollo de las funcionalidades principales.
+
+### RECOMPENSAS
+
+* Completar habitación: existe una probabilidad de 1/3 de recibir una recompensa, ya que la habitación puede soltar monedas, una bomba o nada.
+* Habitación bonus: es una habitación llena de monedas.
+
+### RANKING
+
+El ranking se basará en:
+
+* Qué tan rápido el jugador complete el juego (speedrun).
+
+## 4. Maquetas
+
+### Habitación
+<img width="1152" height="648" alt="TheJourney_MaquetaHABITACION" src="https://github.com/user-attachments/assets/49b21716-eb46-40f2-ac76-13c794bf56a0" />
+
+### SHOP
+<img width="1152" height="648" alt="TheJourney_MaquetaSHOP" src="https://github.com/user-attachments/assets/c24138cf-6eb6-460b-a19b-14100e7d02de" />
+
+### Personaje principal / Jugador
+<img width="480" height="480" alt="Mago_Hielo_PJprincipal" src="https://github.com/user-attachments/assets/c1854491-bd6d-48c6-8390-cc867ce06ca3" />
+
+### Menu Principal y Primera habitación
+<img width="1920" height="1080" alt="menuPrincipal_primeraHabitacion" src="https://github.com/user-attachments/assets/e2b0d008-5300-4b55-a544-19369844b78b" />
+
+### Soundtrack y efectos de sonido (FX)
+Será compuesto y producido por Flores León Emiliano.
