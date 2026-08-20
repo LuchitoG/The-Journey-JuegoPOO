@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PanelMenu extends JPanel{
+
+    private JButton botonJugar;
     
     public PanelMenu() {
         this.setLayout(new GridLayout(1, 2));
@@ -31,7 +33,7 @@ public class PanelMenu extends JPanel{
         labelTitulo.setFont(new Font("Monospaced", Font.BOLD, 58));
         labelTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        JButton botonJugar = new JButton("Jugar");
+        botonJugar = new JButton("Jugar");
         JButton botonRanking = new JButton("Ranking");
         JButton botonOpciones = new JButton("Opciones");
         JButton botonCreditos = new JButton("Creditos");
@@ -53,6 +55,10 @@ public class PanelMenu extends JPanel{
 
         this.add(panelIzquierdo);
         this.add(panelDerecho);
+    }
+
+    public JButton getBotonJugar() {
+        return botonJugar;
     }
 
 }
