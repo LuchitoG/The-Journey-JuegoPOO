@@ -2,6 +2,7 @@ package entidades;
 
 public abstract class Personaje {
 
+    private String nombre;
     private Integer vida; // current hp
     private double velocidad;
     private Integer cadencia;
@@ -22,10 +23,16 @@ public abstract class Personaje {
     // Float posicionX, Float posicionY, direccion direccion, Integer tamanoHeight,
     // Integer tamanoWidth) {
 
-    public Personaje(Integer vida, double velocidad, Integer cadencia, Integer dano, Float posicionX, Float posicionY,
+    public Personaje(String nombre, Integer vida, double velocidad, Integer cadencia, Integer dano, Float posicionX,
+            
+            
+            Float posicionY,
             Integer tamanoHeight, Integer tamanoWidth) {
-
-        // CONSISTENCIA DE ATRIBUTOS
+ 
+        // CONSISTENCIA DE ATRIBUTOS 
+        if (nombre == null || nombre.isEmpty() || nombre.length() > 30) {
+            throw new IllegalArgumentException("nombre invalido");
+        }
         if (vida == null || vida == 0) {
             throw new IllegalArgumentException("valor de vida invalida");
         }
@@ -60,6 +67,7 @@ public abstract class Personaje {
 
         // this todos mugrientos jaja
 
+        this.nombre = nombre;
         this.vida = vida;
         this.velocidad = velocidad;
         this.cadencia = cadencia;
@@ -76,9 +84,18 @@ public abstract class Personaje {
     }
 
     // getters y setters
-
+public String getNombre(){
+        return nombre;
+    }
     public Integer getVida() {
         return vida;
+    }
+    public boolean setNombre(String nombre){
+         if (nombre == null || nombre.isEmpty() || nombre.length() > 30){
+            return false;
+        }
+        this.nombre = nombre;
+        return true;
     }
 
     public Boolean setVida(Integer vida) {
