@@ -11,54 +11,42 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PanelMenu extends JPanel{
+import java.io.InputStream;
+
+public class PanelMenu extends JPanel {
 
     JButton botonJugar, botonRanking, botonOpciones, botonCreditos;
-    
+    Font fuenteTitulo;
+    Font fuenteBotones;
+
     public PanelMenu() {
         this.setLayout(new GridLayout(1, 2));
-        this.setBackground(new Color(20,10,35));
+        this.setBackground(new Color(20, 10, 35));
+
+        // FUENTES PERSONALIZADAS
+        fuenteTitulo = cargarFuente("/recursos/tipografias/Jersey.ttf", 80f);
+        fuenteBotones = cargarFuente("/recursos/tipografias/Jersey.ttf", 32f);
 
         // MITAD IZQUIERDA
         JPanel panelIzquierdo = new JPanel();
-        panelIzquierdo.setOpaque(false); // Para que no tenga fondo
-        // ACA ESTARIA EL PERSONAJE
+        panelIzquierdo.setOpaque(false);
 
         // MITAD DERECHA
         JPanel panelDerecho = new JPanel();
         panelDerecho.setLayout(new BoxLayout(panelDerecho, BoxLayout.Y_AXIS));
-        panelDerecho.setOpaque(false); 
+        panelDerecho.setOpaque(false);
 
         JLabel labelTitulo = new JLabel("The Journey");
         labelTitulo.setForeground(Color.WHITE);
-        labelTitulo.setFont(new Font("Monospaced", Font.BOLD, 80));
+        labelTitulo.setFont(fuenteTitulo); // Aplicamos la fuente aquí
         labelTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-
         Dimension dimensionBotones = new Dimension(400, 60);
-        this.botonJugar = new JButton("Jugar");
-        botonJugar.setFont(new Font("Monospaced", Font.BOLD, 32));
-        botonJugar.setPreferredSize(dimensionBotones);
-        botonJugar.setMinimumSize(dimensionBotones);
-        botonJugar.setMaximumSize(dimensionBotones);
-
-        this.botonRanking = new JButton("Ranking");
-        botonRanking.setFont(new Font("Monospaced", Font.BOLD, 32));
-        botonRanking.setPreferredSize(dimensionBotones);
-        botonRanking.setMinimumSize(dimensionBotones);
-        botonRanking.setMaximumSize(dimensionBotones);
-
-        this.botonOpciones = new JButton("Opciones");
-        botonOpciones.setFont(new Font("Monospaced", Font.BOLD, 32));
-        botonOpciones.setPreferredSize(dimensionBotones);
-        botonOpciones.setMinimumSize(dimensionBotones);
-        botonOpciones.setMaximumSize(dimensionBotones);
-
-        this.botonCreditos = new JButton("Creditos");
-        botonCreditos.setFont(new Font("Monospaced", Font.BOLD, 32));
-        botonCreditos.setPreferredSize(dimensionBotones);
-        botonCreditos.setMinimumSize(dimensionBotones);
-        botonCreditos.setMaximumSize(dimensionBotones);
+        
+        this.botonJugar = crearBoton("Jugar", dimensionBotones);
+        this.botonRanking = crearBoton("Ranking", dimensionBotones);
+        this.botonOpciones = crearBoton("Opciones", dimensionBotones);
+        this.botonCreditos = crearBoton("Creditos", dimensionBotones);
 
         panelDerecho.add(Box.createVerticalGlue());
         panelDerecho.add(labelTitulo);
@@ -71,23 +59,48 @@ public class PanelMenu extends JPanel{
         panelDerecho.add(Box.createVerticalStrut(20));
         panelDerecho.add(botonCreditos);
         panelDerecho.add(Box.createVerticalGlue());
-        
-
 
         this.add(panelIzquierdo);
         this.add(panelDerecho);
     }
 
-    public JButton getBotonJugar(){
-        return this.botonJugar;
+    // MÉTODO AUXILIAR PARA CARGAR LA FUENTE
+    private Font cargarFuente(String ruta, float tamaño) {
+        try {
+            // Buscamos el archivo directamente en los recursos del programa
+            InputStream is = getClass().getResourceAsStream(ruta);
+            
+            // Si la ruta está mal, InputStream devuelve null
+            if (is == null) {
+                System.err.println("No se encontró el archivo exacto en: " + ruta);
+                return new Font("Monospaced", Font.BOLD, (int) tamaño);
+            }
+            
+            // Carga la fuente desde el InputStream
+            Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+            return font.deriveFont(Font.BOLD, tamaño); 
+            
+        } catch (Exception e) {
+            System.err.println("Error al cargar la fuente, usando por defecto.");
+            return new Font("Monospaced", Font.BOLD, (int) tamaño); 
+        }
     }
-    public JButton getBotonRanking(){
-        return this.botonRanking;
+
+    // MÉTODO AUXILIAR PARA NO REPETIR CÓDIGO EN LOS BOTONES
+    private JButton crearBoton(String texto, Dimension dimension) {
+        JButton boton = new JButton(texto);
+        boton.setFont(fuenteBotones); // Aplicamos la fuente
+        boton.setPreferredSize(dimension);
+        boton.setMinimumSize(dimension);
+        boton.setMaximumSize(dimension);
+
+        boton.setFocusPainted(false);
+
+        return boton;
     }
-    public JButton getBotonOpciones(){
-        return this.botonOpciones;
-    }
-    public JButton getBotonCreditos(){
-        return this.botonCreditos;
-    }
+
+    public JButton getBotonJugar() { return this.botonJugar; }
+    public JButton getBotonRanking() { return this.botonRanking; }
+    public JButton getBotonOpciones() { return this.botonOpciones; }
+    public JButton getBotonCreditos() { return this.botonCreditos; }
 }
