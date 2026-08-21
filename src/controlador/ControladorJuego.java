@@ -1,5 +1,6 @@
 package controlador;
 
+import entidades.Heroe;
 import entidades.Personaje;
 import vista.VistaJuego;
 import vista.VistaPrincipal;
@@ -11,9 +12,9 @@ public class ControladorJuego {
     private Personaje jugador;
 
     public ControladorJuego() {
-        //this.jugador = new Heroe(100, 5.0, 5, 5, 10.0f, 10.0f, 10, 10, "jose", 250, 5); // ejemplo de creación de un
+        //this.jugador = new Heroe("Carlos", 5.0, 5, 5, 10.0f, 10.0f, 10, 10, "jose", 250, 5); // ejemplo de creación de un
                                                                                         // personaje
-
+        this.jugador = new Heroe("Carlos", 5, 3, 4, 1, 0.0f, 0.0f, 40, 40, 10, 6);
         this.teclado = new ControladorTeclado();
 
         this.vistaJuego = new VistaJuego(jugador, teclado);
