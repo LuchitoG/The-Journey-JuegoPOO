@@ -1,29 +1,32 @@
 package vista;
 
 import controlador.ControladorTeclado;
-import entidades.Personaje;
+import entidades.Heroe;
+import entidades.ProyectilHeroe;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class VistaJuego extends JPanel implements ActionListener {
 
-    // posicion y tamaño del cuadrado
-    private int x = 100;
-    private int y = 100;
-    private final int tamano = 50;
-
     // instancias de las clases que se van a usar
-    private Personaje jugador;
+    private Heroe jugador;
     private ControladorTeclado teclado;
     private Timer timer;
 
-    public VistaJuego(Personaje jugador, ControladorTeclado teclado) {
+    // guarda la cantidad de proyectiles del jugador
+    private List<ProyectilHeroe> proyectiles;
+
+    public VistaJuego(Heroe jugador, ControladorTeclado teclado) {
         this.jugador = jugador;
         this.teclado = teclado;
+        this.proyectiles = new ArrayList<>();
         setBackground(Color.BLACK); // color del fondo
         setFocusable(true);
         addKeyListener(teclado);
@@ -37,27 +40,71 @@ public class VistaJuego extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.RED); // dibujo el cuadraddo
-        g.fillRect(x, y, tamano, tamano);
+        // posicion del jugador
+        g.setColor(Color.RED);
+        g.fillRect(
+                jugador.getPosicionX().intValue(),
+                jugador.getPosicionY().intValue(),
+                jugador.getTamanoWidth(),
+                jugador.getTamanoHeight());
+        // balas del jugador
+        g.setColor(Color.WHITE);
+        for (ProyectilHeroe p : proyectiles) {
+            g.fillOval(
+                    (int) p.getPosicionX(),
+                    (int) p.getPosicionY(),
+                    p.getTamanoWidth(),
+                    p.getTamanoHeight());
+        }
     }
 
-    // todo esto es lo que hace que se mueva el cuadrado, se puede cambiar por lo
-    // que haga el personaje
+    // todo esto es lo que hace el personaje
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Posición, velocidad y dimensiones del heroe
         double vel = jugador.getVelocidad();
-        if (teclado.isArriba() && y - vel >= 0) {
-            y -= vel;
+        float posX = jugador.getPosicionX();
+        float posY = jugador.getPosicionY();
+        int ancho = jugador.getTamanoWidth();
+        int alto = jugador.getTamanoHeight();
+
+        // Movimiento leyendo directamente el estado del teclado
+        if (teclado.isArriba() && posY - vel >= 0) {
+            posY -= vel;
         }
-        if (teclado.isAbajo() && y + tamano + vel <= getHeight()) {
-            y += vel;
+        if (teclado.isAbajo() && posY + alto + vel <= getHeight()) {
+            posY += vel;
         }
-        if (teclado.isIzquierda() && x - vel >= 0) {
-            x -= vel;
+        if (teclado.isIzquierda() && posX - vel >= 0) {
+            posX -= vel;
         }
-        if (teclado.isDerecha() && x + tamano + vel <= getWidth()) {
-            x += vel;
+        if (teclado.isDerecha() && posX + ancho + vel <= getWidth()) {
+            posX += vel;
         }
+
+        // Actualizar la posición del héroe
+        jugador.setPosicionX(posX);
+        jugador.setPosicionY(posY);
+
+        // Disparo del jugador
+        ProyectilHeroe nuevoProyectil = jugador.intentarDisparar(teclado);
+        if (nuevoProyectil != null) {
+            proyectiles.add(nuevoProyectil);
+        }
+
+        // Mover y eliminar proyectiles que salen de la pantalla
+        Iterator<ProyectilHeroe> it = proyectiles.iterator();
+        while (it.hasNext()) {
+            ProyectilHeroe p = it.next();
+            p.mover(); // Llama a la fórmula de movimiento
+
+            // verifica si la bala esta afuera del mapa para luego borrar
+            if (p.getPosicionX() < 0 || p.getPosicionX() > getWidth() ||
+                    p.getPosicionY() < 0 || p.getPosicionY() > getHeight()) {
+                it.remove();
+            }
+        }
+
         repaint();
     }
 }
