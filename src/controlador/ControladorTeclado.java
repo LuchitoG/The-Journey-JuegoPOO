@@ -72,6 +72,7 @@ public class ControladorTeclado implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
+
         // RELEASE DEL MOVIMIENTO
         if (key == KeyEvent.VK_W)
             arriba = false;
