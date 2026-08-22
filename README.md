@@ -130,3 +130,6 @@ El ranking se basará en:
 
 ### Soundtrack y efectos de sonido (FX)
 Será compuesto y producido por Flores León Emiliano.
+
+### Diagrama de Clases
+<img width="10404" height="4388" alt="image" src="https://github.com/user-attachments/assets/13ea7770-a9fb-4673-9bba-68d5d6a54b47" />
