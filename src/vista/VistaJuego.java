@@ -1,8 +1,9 @@
 package vista;
 
 import controlador.ControladorTeclado;
-import entidades.Heroe;
-import entidades.ProyectilHeroe;
+import modelo.Heroe;
+import modelo.ProyectilHeroe;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;

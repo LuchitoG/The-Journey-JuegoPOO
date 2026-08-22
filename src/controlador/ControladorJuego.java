@@ -1,6 +1,6 @@
 package controlador;
 
-import entidades.Heroe;
+import modelo.Heroe;
 import vista.VistaJuego;
 import vista.VistaPrincipal;
 

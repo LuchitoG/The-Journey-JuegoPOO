@@ -1,6 +1,6 @@
-package controlador;
+package modelo;
 
-public enum ControladorDireccion {
+public enum Direccion {
     ARRIBA, ABAJO, IZQUIERDA, DERECHA
 
 }
