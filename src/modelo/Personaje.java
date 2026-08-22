@@ -1,4 +1,4 @@
-package entidades;
+package modelo;
 
 public abstract class Personaje {
 
@@ -24,12 +24,11 @@ public abstract class Personaje {
     // Integer tamanoWidth) {
 
     public Personaje(String nombre, Integer vida, double velocidad, Integer cadencia, Integer dano, Float posicionX,
-            
-            
+
             Float posicionY,
             Integer tamanoHeight, Integer tamanoWidth) {
- 
-        // CONSISTENCIA DE ATRIBUTOS 
+
+        // CONSISTENCIA DE ATRIBUTOS
         if (nombre == null || nombre.isEmpty() || nombre.length() > 30) {
             throw new IllegalArgumentException("nombre invalido");
         }
@@ -84,14 +83,16 @@ public abstract class Personaje {
     }
 
     // getters y setters
-public String getNombre(){
+    public String getNombre() {
         return nombre;
     }
+
     public Integer getVida() {
         return vida;
     }
-    public boolean setNombre(String nombre){
-         if (nombre == null || nombre.isEmpty() || nombre.length() > 30){
+
+    public boolean setNombre(String nombre) {
+        if (nombre == null || nombre.isEmpty() || nombre.length() > 30) {
             return false;
         }
         this.nombre = nombre;
