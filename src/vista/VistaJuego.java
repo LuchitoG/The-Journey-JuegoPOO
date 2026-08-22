@@ -103,7 +103,6 @@ public class VistaJuego extends JPanel implements ActionListener {
                 it.remove();
             }
         }
-
         repaint();
     }
 }
