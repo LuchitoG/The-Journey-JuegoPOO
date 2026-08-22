@@ -1,46 +1,15 @@
 package controlador;
 
+import modelo.Direccion;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class ControladorTeclado implements KeyListener {
 
-    private boolean arriba, abajo, izquierda, derecha;
-
-    private boolean dispararArriba, dispararAbajo, dispararIzq, dispararDere;
     // Getters para consultar el estado de movimiento
 
-    public boolean isArriba() {
-        return arriba;
-    }
-
-    public boolean isAbajo() {
-        return abajo;
-    }
-
-    public boolean isIzquierda() {
-        return izquierda;
-    }
-
-    public boolean isDerecha() {
-        return derecha;
-    }
-
-    public boolean isDispararArriba() {
-        return dispararArriba;
-    }
-
-    public boolean isDispararAbajo() {
-        return dispararAbajo;
-    }
-
-    public boolean isDispararIzq() {
-        return dispararIzq;
-    }
-
-    public boolean isDispararDere() {
-        return dispararDere;
-    }
+    private Direccion direccionCaminar;
+    private Direccion direccionDisparar;
 
     // lo que permite que el controlador pueda recibir eventos de teclado
 
@@ -49,49 +18,24 @@ public class ControladorTeclado implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_W)
-            arriba = true;
+            direccionCaminar = Direccion.ARRIBA;
         if (key == KeyEvent.VK_S)
-            abajo = true;
+            direccionCaminar = Direccion.ABAJO;
         if (key == KeyEvent.VK_A)
-            izquierda = true;
+            direccionCaminar = Direccion.IZQUIERDA;
         if (key == KeyEvent.VK_D)
-            derecha = true;
+            direccionCaminar = Direccion.DERECHA;
 
         // DISPARO
 
         if (key == KeyEvent.VK_UP)
-            dispararArriba = true;
+            direccionDisparar = Direccion.ARRIBA;
         if (key == KeyEvent.VK_DOWN)
-            dispararAbajo = true;
+            direccionDisparar = Direccion.ABAJO;
         if (key == KeyEvent.VK_LEFT)
-            dispararIzq = true;
+            direccionDisparar = Direccion.IZQUIERDA;
         if (key == KeyEvent.VK_RIGHT)
-            dispararDere = true;
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
-
-        // RELEASE DEL MOVIMIENTO
-        if (key == KeyEvent.VK_W)
-            arriba = false;
-        if (key == KeyEvent.VK_S)
-            abajo = false;
-        if (key == KeyEvent.VK_A)
-            izquierda = false;
-        if (key == KeyEvent.VK_D)
-            derecha = false;
-
-        // RELEASE DEL DISPARO
-        if (key == KeyEvent.VK_UP)
-            dispararArriba = false;
-        if (key == KeyEvent.VK_DOWN)
-            dispararAbajo = false;
-        if (key == KeyEvent.VK_LEFT)
-            dispararIzq = false;
-        if (key == KeyEvent.VK_RIGHT)
-            dispararDere = false;
+            direccionDisparar = Direccion.IZQUIERDA;
     }
 
     @Override
