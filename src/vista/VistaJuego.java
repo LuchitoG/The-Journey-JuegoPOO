@@ -1,8 +1,9 @@
 package vista;
 
 import controlador.ControladorTeclado;
-import entidades.Heroe;
-import entidades.ProyectilHeroe;
+import modelo.Heroe;
+import modelo.ProyectilHeroe;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -92,19 +93,17 @@ public class VistaJuego extends JPanel implements ActionListener {
             proyectiles.add(nuevoProyectil);
         }
 
-        // Mover y eliminar proyectiles que salen de la pantalla
+        // Mover proyectiles y remover
         Iterator<ProyectilHeroe> it = proyectiles.iterator();
         while (it.hasNext()) {
             ProyectilHeroe p = it.next();
-            p.mover(); // Llama a la fórmula de movimiento
+            p.mover(); // Llama a la formula de trayecto del proyectil
 
-            // verifica si la bala esta afuera del mapa para luego borrar
-            if (p.getPosicionX() < 0 || p.getPosicionX() > getWidth() ||
-                    p.getPosicionY() < 0 || p.getPosicionY() > getHeight()) {
+            // método estaFueraDePantalla de Proyectil
+            if (p.estaFueraDePantalla(getWidth(), getHeight())) {
                 it.remove();
             }
         }
-
         repaint();
     }
 }
