@@ -132,5 +132,6 @@ El ranking se basará en:
 Será compuesto y producido por Flores León Emiliano.
 
 ### Diagrama de Clases
-<img width="10404" height="4388" alt="image" src="https://github.com/user-attachments/assets/e5fc4a08-1529-48f5-a9c0-932ed83cbc2a" />
+<img width="11328" height="4888" alt="image" src="https://github.com/user-attachments/assets/05f3e7db-b0e3-456b-9bd6-970035640c00" />
+
 
