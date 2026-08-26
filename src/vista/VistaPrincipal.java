@@ -18,7 +18,7 @@ public class VistaPrincipal extends JFrame {
         setResizable(false);
 
         panelContenedor = new JPanel();
-        panelContenedor.setPreferredSize(new Dimension(1500, 960)); // ratio 25:16
+        panelContenedor.setPreferredSize(new Dimension(1920, 1080)); // ratio 16:9
         panelContenedor.setLayout(new BorderLayout());
         panelContenedor.setBackground(Color.BLACK);
         this.add(panelContenedor);

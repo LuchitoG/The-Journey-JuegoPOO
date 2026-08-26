@@ -5,12 +5,13 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.io.InputStream;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.io.InputStream;
+import vista.componentes.BotonAnimado;
 
 public class PanelMenu extends JPanel {
 
@@ -23,8 +24,8 @@ public class PanelMenu extends JPanel {
         this.setBackground(new Color(20, 10, 35));
 
         // FUENTES PERSONALIZADAS
-        fuenteTitulo = cargarFuente("/recursos/tipografias/Jersey.ttf", 80f);
-        fuenteBotones = cargarFuente("/recursos/tipografias/Jersey.ttf", 32f);
+        fuenteTitulo = cargarFuente("/recursos/tipografias/Jersey.ttf", 140f);
+        fuenteBotones = cargarFuente("/recursos/tipografias/Jersey.ttf", 72f);
 
         // MITAD IZQUIERDA
         JPanel panelIzquierdo = new JPanel();
@@ -40,12 +41,12 @@ public class PanelMenu extends JPanel {
         labelTitulo.setFont(fuenteTitulo); // Aplicamos la fuente aquí
         labelTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Dimension dimensionBotones = new Dimension(400, 60);
+        Dimension dimensionBotones = new Dimension(400, 100);
         
-        this.botonJugar = crearBoton("Jugar", dimensionBotones);
-        this.botonRanking = crearBoton("Ranking", dimensionBotones);
-        this.botonOpciones = crearBoton("Opciones", dimensionBotones);
-        this.botonCreditos = crearBoton("Creditos", dimensionBotones);
+        this.botonJugar =  new BotonAnimado("Jugar", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
+        this.botonRanking =  new BotonAnimado("Ranking", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
+        this.botonOpciones=  new BotonAnimado("Opciones", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
+        this.botonCreditos =  new BotonAnimado("Creditos", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
 
         panelDerecho.add(Box.createVerticalGlue());
         panelDerecho.add(labelTitulo);

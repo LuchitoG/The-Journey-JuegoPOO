@@ -51,7 +51,7 @@ public class PanelCreditos extends JPanel {
         agregarEncabezado(contenedorCreditos, "DESARROLLADO POR");
         agregarNombre(contenedorCreditos, "León Flores");
         agregarNombre(contenedorCreditos, "Luca Gil");
-        agregarNombre(contenedorCreditos, "Lucciano Giovanini");
+        agregarNombre(contenedorCreditos, "Luciano Giovannini");
         agregarNombre(contenedorCreditos, "Ciro Saucedo");
 
         contenedorCreditos.add(Box.createVerticalStrut(18));
