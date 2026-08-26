@@ -15,7 +15,7 @@ import vista.componentes.BotonAnimado;
 
 public class PanelMenu extends JPanel {
 
-    JButton botonJugar, botonRanking, botonOpciones, botonCreditos;
+    JButton botonJugar, botonRanking, botonOpciones, botonCreditos, botonSalir;
     Font fuenteTitulo;
     Font fuenteBotones;
 
@@ -28,8 +28,31 @@ public class PanelMenu extends JPanel {
         fuenteBotones = cargarFuente("/recursos/tipografias/Jersey.ttf", 72f);
 
         // MITAD IZQUIERDA
-        JPanel panelIzquierdo = new JPanel();
+        // MITAD IZQUIERDA
+        // Usamos BorderLayout para centrar fácilmente el contenido
+        JPanel panelIzquierdo = new JPanel(new java.awt.BorderLayout());
         panelIzquierdo.setOpaque(false);
+
+        // Cargar el GIF
+        try {
+            // Asegúrate de cambiar esta ruta por la ubicación real de tu GIF
+            java.net.URL urlGif = getClass().getResource("/recursos/gifMago.gif");
+            
+            if (urlGif != null) {
+                javax.swing.ImageIcon iconoGif = new javax.swing.ImageIcon(urlGif);
+                JLabel labelGif = new JLabel(iconoGif);
+                
+                // Centramos el GIF dentro del panel izquierdo
+                labelGif.setHorizontalAlignment(JLabel.CENTER); 
+                labelGif.setVerticalAlignment(JLabel.CENTER);
+                
+                panelIzquierdo.add(labelGif, java.awt.BorderLayout.CENTER);
+            } else {
+                System.err.println("No se encontró el GIF en la ruta especificada.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error al cargar el GIF.");
+        }
 
         // MITAD DERECHA
         JPanel panelDerecho = new JPanel();
@@ -41,12 +64,13 @@ public class PanelMenu extends JPanel {
         labelTitulo.setFont(fuenteTitulo); // Aplicamos la fuente aquí
         labelTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Dimension dimensionBotones = new Dimension(400, 100);
+        Dimension dimensionBotones = new Dimension(400, 60);
         
         this.botonJugar =  new BotonAnimado("Jugar", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
         this.botonRanking =  new BotonAnimado("Ranking", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
         this.botonOpciones=  new BotonAnimado("Opciones", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
         this.botonCreditos =  new BotonAnimado("Creditos", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
+        this.botonSalir =  new BotonAnimado("Salir", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
 
         panelDerecho.add(Box.createVerticalGlue());
         panelDerecho.add(labelTitulo);
@@ -58,6 +82,8 @@ public class PanelMenu extends JPanel {
         panelDerecho.add(botonOpciones);
         panelDerecho.add(Box.createVerticalStrut(20));
         panelDerecho.add(botonCreditos);
+        panelDerecho.add(Box.createVerticalStrut(20));
+        panelDerecho.add(botonSalir);
         panelDerecho.add(Box.createVerticalGlue());
 
         this.add(panelIzquierdo);
@@ -103,4 +129,5 @@ public class PanelMenu extends JPanel {
     public JButton getBotonRanking() { return this.botonRanking; }
     public JButton getBotonOpciones() { return this.botonOpciones; }
     public JButton getBotonCreditos() { return this.botonCreditos; }
+    public JButton getBotonSalir() { return this.botonSalir; }
 }

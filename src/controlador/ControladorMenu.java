@@ -56,6 +56,12 @@ public class ControladorMenu {
             controladorCreditos = new ControladorCreditos(panelCreditos);
         });
 
+        this.panelMenu.getBotonSalir().addActionListener(e -> {
+            System.out.println("Boton salir");
+
+            System.exit(0); // Para cerrar el jueguito
+        });
+
 
     }
 
