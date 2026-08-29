@@ -1,10 +1,16 @@
 package vista.componentes;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URL;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 
 public class BotonAnimado extends JButton {
@@ -16,7 +22,10 @@ public class BotonAnimado extends JButton {
     private float tamañoNormal;
     private float tamañoHover;
 
-    // El constructor ahora recibe los tamaños de fuente normal y hover
+    // Rutas de sonido por defecto
+    private String rutaSonidoHover = "/recursos/sonidos/hover.wav";
+    private String rutaSonidoClic = "/recursos/sonidos/clic.wav";
+
     public BotonAnimado(String texto, Dimension dimension, Font fuente, Color colorNormal, Color colorHover, float tamañoNormal, float tamañoHover) {
         super(texto);
         this.textoOriginal = texto;
@@ -54,6 +63,7 @@ public class BotonAnimado extends JButton {
                 setForeground(colorHover);
                 setFont(fuenteBase.deriveFont(tamañoHover));
                 setText("> " + textoOriginal + " <");
+                reproducirEfectoCorto(rutaSonidoHover); // Sonido al pasar el ratón
             }
 
             @Override
@@ -62,7 +72,27 @@ public class BotonAnimado extends JButton {
                 setFont(fuenteBase.deriveFont(tamañoNormal));
                 setText(textoOriginal);
             }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                reproducirEfectoCorto(rutaSonidoClic); // Sonido al hacer clic
+            }
         });
+    }
+
+    // --- REPRODUCTOR DE SONIDO INTEGRADO ---
+    private void reproducirEfectoCorto(String ruta) {
+        try {
+            URL url = getClass().getResource(ruta);
+            if (url != null) {
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                clip.start(); 
+            }
+        } catch (Exception ex) {
+            // Se ignora para no inundar la consola si falta un archivo
+        }
     }
 
     // --- Setters para modificar los valores dinámicamente ---
@@ -85,5 +115,14 @@ public class BotonAnimado extends JButton {
         this.tamañoNormal = normal;
         this.tamañoHover = hover;
         setFont(fuenteBase.deriveFont(this.tamañoNormal));
+    }
+
+    // Setters por si necesitas cambiar los sonidos de un botón específico
+    public void setSonidoHover(String ruta) {
+        this.rutaSonidoHover = ruta;
+    }
+
+    public void setSonidoClic(String ruta) {
+        this.rutaSonidoClic = ruta;
     }
 }

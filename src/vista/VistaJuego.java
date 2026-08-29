@@ -8,10 +8,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
 public class VistaJuego extends JPanel implements ActionListener {
@@ -32,10 +37,18 @@ public class VistaJuego extends JPanel implements ActionListener {
         setFocusable(true);
         addKeyListener(teclado);
 
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "pausaEsc");
+        this.getActionMap().put("pausaEsc", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                java.awt.Window parent = javax.swing.SwingUtilities.getWindowAncestor(VistaJuego.this);
+                new PanelSalir(parent).setVisible(true);
+            }
+        });
+
         timer = new Timer(16, this); // (1000ms / 60 ≈ 16ms)
         timer.start(); // el timer lo que hace es checkear a cada rato si se esta realizando alguna
                        // accion del usuario
-
     }
 
     @Override

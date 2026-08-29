@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class VistaPrincipal extends JFrame {
 
-    public static JPanel panelContenedor;
+    public static JPanel panelContenedor; 
     private PanelMenu panelMenu;
     private ControladorMenu controladorMenu;
 
@@ -17,8 +17,12 @@ public class VistaPrincipal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
+        // --- CONFIGURACIÓN DE PANTALLA COMPLETA ---
+        setUndecorated(true); 
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        // ------------------------------------------
+
         panelContenedor = new JPanel();
-        panelContenedor.setPreferredSize(new Dimension(1920, 1080)); // ratio 16:9
         panelContenedor.setLayout(new BorderLayout());
         panelContenedor.setBackground(Color.BLACK);
         this.add(panelContenedor);
@@ -26,8 +30,9 @@ public class VistaPrincipal extends JFrame {
         panelMenu = new PanelMenu();
         controladorMenu = new ControladorMenu(panelMenu);
 
-        pack();
-        setLocationRelativeTo(null);
+        // Cargamos el menú inicial al arrancar el programa
+        setPanelContenedor(panelMenu);
+
     }
 
     public static void setPanelContenedor(JPanel panelNuevo) {
@@ -37,6 +42,8 @@ public class VistaPrincipal extends JFrame {
         // Para que swing refresque y se vea
         panelContenedor.revalidate();
         panelContenedor.repaint();
+        
+        // --- FOCO PARA EL TECLADO ---
+        SwingUtilities.invokeLater(() -> panelNuevo.requestFocusInWindow());
     }
-
 }

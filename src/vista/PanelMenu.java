@@ -5,72 +5,78 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.InputStream;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+
 import vista.componentes.BotonAnimado;
 
 public class PanelMenu extends JPanel {
 
-    JButton botonJugar, botonRanking, botonOpciones, botonCreditos, botonSalir;
-    Font fuenteTitulo;
-    Font fuenteBotones;
+    private JButton botonJugar, botonRanking, botonOpciones, botonCreditos, botonSalir;
+    private Font fuenteTitulo, fuenteBotones;
+    private Clip clipMusica;
 
     public PanelMenu() {
         this.setLayout(new GridLayout(1, 2));
         this.setBackground(new Color(20, 10, 35));
 
-        // FUENTES PERSONALIZADAS
         fuenteTitulo = cargarFuente("/recursos/tipografias/Jersey.ttf", 140f);
         fuenteBotones = cargarFuente("/recursos/tipografias/Jersey.ttf", 72f);
 
-        // MITAD IZQUIERDA
-        // MITAD IZQUIERDA
-        // Usamos BorderLayout para centrar fácilmente el contenido
+        // MITAD IZQUIERDA (GIF)
         JPanel panelIzquierdo = new JPanel(new java.awt.BorderLayout());
         panelIzquierdo.setOpaque(false);
-
-        // Cargar el GIF
         try {
-            // Asegúrate de cambiar esta ruta por la ubicación real de tu GIF
-            java.net.URL urlGif = getClass().getResource("/recursos/gifMago.gif");
-            
+            java.net.URL urlGif = getClass().getResource("/recursos/mago.gif");
             if (urlGif != null) {
-                javax.swing.ImageIcon iconoGif = new javax.swing.ImageIcon(urlGif);
-                JLabel labelGif = new JLabel(iconoGif);
-                
-                // Centramos el GIF dentro del panel izquierdo
+                JLabel labelGif = new JLabel(new javax.swing.ImageIcon(urlGif));
                 labelGif.setHorizontalAlignment(JLabel.CENTER); 
-                labelGif.setVerticalAlignment(JLabel.CENTER);
-                
                 panelIzquierdo.add(labelGif, java.awt.BorderLayout.CENTER);
-            } else {
-                System.err.println("No se encontró el GIF en la ruta especificada.");
             }
         } catch (Exception e) {
             System.err.println("Error al cargar el GIF.");
         }
 
-        // MITAD DERECHA
+        // MITAD DERECHA (BOTONES)
         JPanel panelDerecho = new JPanel();
         panelDerecho.setLayout(new BoxLayout(panelDerecho, BoxLayout.Y_AXIS));
         panelDerecho.setOpaque(false);
 
         JLabel labelTitulo = new JLabel("The Journey");
-        labelTitulo.setForeground(Color.WHITE);
-        labelTitulo.setFont(fuenteTitulo); // Aplicamos la fuente aquí
+        labelTitulo.setForeground(Color.YELLOW);
+        labelTitulo.setFont(fuenteTitulo); 
         labelTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         Dimension dimensionBotones = new Dimension(400, 60);
         
-        this.botonJugar =  new BotonAnimado("Jugar", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
-        this.botonRanking =  new BotonAnimado("Ranking", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
-        this.botonOpciones=  new BotonAnimado("Opciones", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
-        this.botonCreditos =  new BotonAnimado("Creditos", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
-        this.botonSalir =  new BotonAnimado("Salir", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
+        // El sonido ya viene incluido dentro de cada BotonAnimado
+        botonJugar = new BotonAnimado("Jugar", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
+        botonRanking = new BotonAnimado("Ranking", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
+        botonOpciones = new BotonAnimado("Opciones", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
+        botonCreditos = new BotonAnimado("Creditos", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
+        botonSalir = new BotonAnimado("Salir", dimensionBotones, fuenteBotones, Color.WHITE, new Color(255, 215, 0), 50f, 55f);
+
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "escapeMenu");
+        this.getActionMap().put("escapeMenu", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                java.awt.Window parent = javax.swing.SwingUtilities.getWindowAncestor(PanelMenu.this);
+                new PanelSalir(parent).setVisible(true);
+            }
+        });
 
         panelDerecho.add(Box.createVerticalGlue());
         panelDerecho.add(labelTitulo);
@@ -88,41 +94,31 @@ public class PanelMenu extends JPanel {
 
         this.add(panelIzquierdo);
         this.add(panelDerecho);
+
+        reproducirMusica("/recursos/sonidos/NORTHERNLIGHT(menu).wav");
     }
 
-    // MÉTODO AUXILIAR PARA CARGAR LA FUENTE
+    private void reproducirMusica(String ruta) {
+        try {
+            java.net.URL url = getClass().getResource(ruta);
+            if (url != null) {
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+                clipMusica = AudioSystem.getClip();
+                clipMusica.open(audioIn);
+                clipMusica.loop(Clip.LOOP_CONTINUOUSLY); 
+                clipMusica.start();
+            }
+        } catch (Exception e) {}
+    }
+
     private Font cargarFuente(String ruta, float tamaño) {
         try {
-            // Buscamos el archivo directamente en los recursos del programa
             InputStream is = getClass().getResourceAsStream(ruta);
-            
-            // Si la ruta está mal, InputStream devuelve null
-            if (is == null) {
-                System.err.println("No se encontró el archivo exacto en: " + ruta);
-                return new Font("Monospaced", Font.BOLD, (int) tamaño);
-            }
-            
-            // Carga la fuente desde el InputStream
-            Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-            return font.deriveFont(Font.BOLD, tamaño); 
-            
+            if (is == null) return new Font("Monospaced", Font.BOLD, (int) tamaño);
+            return Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.BOLD, tamaño); 
         } catch (Exception e) {
-            System.err.println("Error al cargar la fuente, usando por defecto.");
             return new Font("Monospaced", Font.BOLD, (int) tamaño); 
         }
-    }
-
-    // MÉTODO AUXILIAR PARA NO REPETIR CÓDIGO EN LOS BOTONES
-    private JButton crearBoton(String texto, Dimension dimension) {
-        JButton boton = new JButton(texto);
-        boton.setFont(fuenteBotones); // Aplicamos la fuente
-        boton.setPreferredSize(dimension);
-        boton.setMinimumSize(dimension);
-        boton.setMaximumSize(dimension);
-
-        boton.setFocusPainted(false);
-
-        return boton;
     }
 
     public JButton getBotonJugar() { return this.botonJugar; }

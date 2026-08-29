@@ -5,6 +5,7 @@ import vista.PanelLogin;
 import vista.PanelMenu;
 import vista.PanelOpciones;
 import vista.PanelRanking;
+import vista.PanelSalir; // Importante importar la nueva clase
 import vista.VistaPrincipal;
 
 public class ControladorMenu {
@@ -32,7 +33,6 @@ public class ControladorMenu {
             controladorLogin = new ControladorLogin(panelLogin);
         });
 
-
         this.panelMenu.getBotonRanking().addActionListener(e -> {
             System.out.println("Boton ranking");
 
@@ -40,14 +40,12 @@ public class ControladorMenu {
             controladorRanking = new ControladorRanking(panelRanking);
         });
 
-
         this.panelMenu.getBotonOpciones().addActionListener(e -> {
             System.out.println("Boton opciones");
 
             panelOpciones = new PanelOpciones();
             controladorOpciones = new ControladorOpciones(panelOpciones);
         });
-
 
         this.panelMenu.getBotonCreditos().addActionListener(e -> {
             System.out.println("Boton creditos");
@@ -58,12 +56,9 @@ public class ControladorMenu {
 
         this.panelMenu.getBotonSalir().addActionListener(e -> {
             System.out.println("Boton salir");
-
-            System.exit(0); // Para cerrar el jueguito
+            // Obtenemos la ventana principal y le pasamos el foco a la nueva ventanita
+            java.awt.Window parent = javax.swing.SwingUtilities.getWindowAncestor(this.panelMenu);
+            new PanelSalir(parent).setVisible(true);
         });
-
-
     }
-
-
 }
