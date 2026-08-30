@@ -7,11 +7,11 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JButton;
+import utilidades.GestorAudio;
 
 public class BotonAnimado extends JButton {
 
@@ -63,7 +63,8 @@ public class BotonAnimado extends JButton {
                 setForeground(colorHover);
                 setFont(fuenteBase.deriveFont(tamañoHover));
                 setText("> " + textoOriginal + " <");
-                reproducirEfectoCorto(rutaSonidoHover); // Sonido al pasar el ratón
+                // Lo cambie ciro reproducirEfectoCorto(rutaSonidoHover); // Sonido al pasar el ratón
+                GestorAudio.getInstance().reproducirEfecto(GestorAudio.SFX_HOVER);
             }
 
             @Override
@@ -75,7 +76,8 @@ public class BotonAnimado extends JButton {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                reproducirEfectoCorto(rutaSonidoClic); // Sonido al hacer clic
+                // Lo cambie ciro reproducirEfectoCorto(rutaSonidoClic); // Sonido al hacer clic
+                GestorAudio.getInstance().reproducirEfecto(GestorAudio.SFX_CLICK);
             }
         });
     }

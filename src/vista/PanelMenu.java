@@ -8,7 +8,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.InputStream;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -20,7 +19,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-
+import utilidades.GestorAudio;
 import vista.componentes.BotonAnimado;
 
 public class PanelMenu extends JPanel {
@@ -95,7 +94,8 @@ public class PanelMenu extends JPanel {
         this.add(panelIzquierdo);
         this.add(panelDerecho);
 
-        reproducirMusica("/recursos/sonidos/NORTHERNLIGHT(menu).wav");
+        GestorAudio.getInstance().reproducirMusica(GestorAudio.MUSICA_MENU);
+        //reproducirMusica("/recursos/sonidos/NORTHERNLIGHT(menu).wav");
     }
 
     private void reproducirMusica(String ruta) {

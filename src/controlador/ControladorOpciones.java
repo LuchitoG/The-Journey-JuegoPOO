@@ -3,6 +3,7 @@ package controlador;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import modelo.ModeloOpciones;
 import vista.PanelOpciones;
 
 public class ControladorOpciones {
@@ -22,7 +23,21 @@ public class ControladorOpciones {
         dialogo.add(panelOpciones);
         dialogo.setLocationRelativeTo(null);
         dialogo.setResizable(false);
-        dialogo.setVisible(true);
+        
+
+        // Cuando abro las opciones se pone el valor guradado en el modeloOpciones
+        this.panelOpciones.getSliderVolumen().setValue(ModeloOpciones.getInstance().getVolumen());
+
+        // Cuando cambia el volumen actualiza modeloOpciones
+        this.panelOpciones.getSliderVolumen().addChangeListener(e -> {
+            ModeloOpciones.getInstance().setVolumen(this.panelOpciones.getSliderVolumen().getValue());
+        });
+
+
+
+
+
+        dialogo.setVisible(true); // ESTO VA A LO ULTIMO SI O SI
     }
 
 }
