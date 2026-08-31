@@ -13,7 +13,7 @@ public class GestorAudio {
     // La musica de fondo que esta sonando en el momento
     private Clip musicaActual;
 
-    // Constantes de tus audios (ajusta las rutas según tus carpetas)
+    // Las constantes con las rutas de los audios
     public static final String MUSICA_MENU = "/recursos/sonidos/NORTHERNLIGHT(menu).wav";
     public static final String SFX_HOVER = "/recursos/sonidos/hover.wav";
     public static final String SFX_CLICK = "/recursos/sonidos/click.wav";
@@ -54,7 +54,7 @@ public class GestorAudio {
         }
     }
 
-    // Detiene la música de fondo actual
+    // Detiene la musica de fondo actual
     public void detenerMusica() {
         if (musicaActual != null && musicaActual.isRunning()) {
             musicaActual.stop();
@@ -84,7 +84,7 @@ public class GestorAudio {
     }
 
     
-    // Metodo que llama ModeloOpciones cuando el usuario mueve el Jslider, solo afecta a la música que ya está sonando
+    // Metodo que llama ModeloOpciones cuando el usuario mueve el Jslider, solo afecta a la musica que ya esta sonando
     public void setVolumenGlobal(int nuevoVolumen) {
         if (musicaActual != null && musicaActual.isRunning()) {
             aplicarVolumen(musicaActual, nuevoVolumen);
