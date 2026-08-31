@@ -7,7 +7,6 @@ public class ModeloOpciones {
     private static ModeloOpciones instance;
     
     private int volumen;
-    private boolean botonWasdK, botonFlechasF;
 
     private ModeloOpciones() {
         this.volumen = 50;
