@@ -2,7 +2,7 @@ package modelo;
 
 public class Botiquin extends Item implements Efecto {
 
-    private Integer incrementoVida = 25;
+    private final Integer incrementoVida = 25;
 
     public Botiquin(String nombreItem, String descripcionItem, Integer precioItem, Integer incrementoVida) {
         super(nombreItem, descripcionItem, precioItem);
@@ -12,10 +12,17 @@ public class Botiquin extends Item implements Efecto {
     }
 
     @Override
-    public void aplicarEfecto(Integer vida) {
-        vida = getVida();
-        vida += 25;
-        setVida(vida);
+    public void aplicarEfecto(Personaje personaje) {
+        int incremento = personaje.getVida() + incrementoVida;
+
+        if (personaje instanceof Heroe) { // antes de incremetar la vida me fijo que estoy incrementandole al modelo
+                                          // hijo de personaje correcto ya que el heroe tiene definido la vida maxima y no queremos que se pase del limite
+            Heroe heroe = (Heroe) personaje;
+            if (incremento > heroe.getVidaMaxima()) {
+                incremento = heroe.getVidaMaxima();
+            }
+            personaje.setVida(incremento);
+        }
     }
 
 }
