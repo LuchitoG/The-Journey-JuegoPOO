@@ -69,8 +69,8 @@ public class Heroe extends Personaje {
          * porque el heroe tiene stats de la bala que se modifican a cada rato
          */
 
-        double velocidadBala = 8.0; // <---- se explica solo
-        int tamanoBala = 10; // <---- se explica solo
+        double velocidadBala = 12.0; // <---- se explica solo
+        int tamanoBala = 12; // <---- se explica solo
 
         return new ProyectilHeroe(centroX, centroY, velocidadBala, getDano(), dirX, dirY, tamanoBala, tamanoBala);
     }
