@@ -32,8 +32,8 @@ public class ControladorLogin {
             System.out.println("Boton jugar");
             dialogo.dispose();
             
-            paneljuego = new PanelJuego();
-            controladorJuego = new ControladorJuego(paneljuego);
+            
+            controladorJuego = new ControladorJuego();
             //new ControladorJuego();
         }
         );
