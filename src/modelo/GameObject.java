@@ -11,7 +11,7 @@ public abstract class GameObject {
     private boolean existe;
     private BufferedImage spriteActual;
 
-    public GameObject(float posicionX, float posicionY, float posicionZ, int ancho, int alto,
+    public GameObject(float posicionX, float posicionY, float posicionZ, int ancho, int alto, boolean existe,
             BufferedImage spriteActual) {
         this.posicionX = posicionX;
         this.posicionY = posicionY;

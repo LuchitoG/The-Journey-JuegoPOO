@@ -1,5 +1,6 @@
 package modelo.entidades;
 
+import controlador.ControladorSprites;
 import controlador.ControladorTeclado;
 
 public class Heroe extends Personaje {
@@ -15,9 +16,9 @@ public class Heroe extends Personaje {
             Float posicionY,
             Integer tamanoHeight, Integer tamanoWidth, Integer vidaMaxima, Integer mana) {
 
-        super(nombre, vida, velocidad, cadencia, dano, posicionX, posicionY, tamanoHeight, tamanoWidth); // heredacion
-                                                                                                         // toda
-                                                                                                         // mugrienta
+        super(nombre, vida, velocidad, cadencia, dano, posicionX, posicionY, 32, 32); // heredacion
+        ControladorSprites.getSprite(1, 225, 32, 32);
+
         if (vidaMaxima <= 0 || vidaMaxima > 250) {
             throw new IllegalArgumentException("vida maxima invalida algo rompiste");
         }
