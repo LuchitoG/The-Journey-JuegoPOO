@@ -1,5 +1,6 @@
-package modelo.Items;
+package modelo.items;
 
+import controlador.ControladorSprites;
 import modelo.entidades.Personaje;
 
 public class MejoraDano extends Item implements Efecto {
@@ -7,6 +8,7 @@ public class MejoraDano extends Item implements Efecto {
 
     public MejoraDano(String nombreItem, String descripcionItem, Integer precioItem, double incrementoDano) {
         super(nombreItem, descripcionItem, precioItem);
+        ControladorSprites.getSprite(1, 81, 32, 16);
     }
 
     @Override

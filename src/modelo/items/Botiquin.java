@@ -1,5 +1,6 @@
-package modelo.Items;
+package modelo.items;
 
+import controlador.ControladorSprites;
 import modelo.entidades.Heroe;
 import modelo.entidades.Personaje;
 
@@ -9,6 +10,7 @@ public class Botiquin extends Item implements Efecto {
 
     public Botiquin(String nombreItem, String descripcionItem, Integer precioItem, Integer incrementoVida) {
         super(nombreItem, descripcionItem, precioItem);
+        ControladorSprites.getSprite(33, 81, 16, 16);
         if (incrementoVida == null || incrementoVida > 25) {
             throw new IllegalArgumentException("Valor de incremento de vida invalido");
         }
