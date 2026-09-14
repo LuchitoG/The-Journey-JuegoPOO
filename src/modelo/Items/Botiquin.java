@@ -1,4 +1,4 @@
-package modelo.Items;
+package modelo.items;
 
 import modelo.entidades.Heroe;
 import modelo.entidades.Personaje;
