@@ -35,7 +35,8 @@ public class VistaJuego extends JPanel implements ActionListener {
         setFocusable(true);
         addKeyListener(teclado);
 
-        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "pausaEsc");
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+                "pausaEsc");
         this.getActionMap().put("pausaEsc", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
