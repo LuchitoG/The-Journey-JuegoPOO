@@ -18,7 +18,7 @@ public class Heroe extends Personaje {
         super(nombre, vida, velocidad, cadencia, dano, posicionX, posicionY, tamanoHeight, tamanoWidth); // heredacion
                                                                                                          // toda
                                                                                                          // mugrienta
-        if (vidaMaxima <= 0 || vidaMaxima > 250) {
+        if (vidaMaxima == null|| vidaMaxima <= 0 || vidaMaxima > 250) {
             throw new IllegalArgumentException("vida maxima invalida algo rompiste");
         }
         if (mana <= 0 || mana > 100) {
@@ -38,7 +38,7 @@ public class Heroe extends Personaje {
             return null;
         }
         // si no se toca una tecla no hago nada xD
-        if (!teclado.isDispararArriba() && !teclado.isDispararAbajo() & !teclado.isDispararIzq()
+        if (!teclado.isDispararArriba() && !teclado.isDispararAbajo() && !teclado.isDispararIzq()
                 && !teclado.isDispararDere()) {
             return null;
         }

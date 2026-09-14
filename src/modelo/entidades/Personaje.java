@@ -230,7 +230,7 @@ public abstract class Personaje {
     }
 
     public boolean estaMuerto() {
-        return vida < 0;
+        return vida <= 0;
     }
 
 }

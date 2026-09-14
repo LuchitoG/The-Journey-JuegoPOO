@@ -5,7 +5,7 @@ import modelo.entidades.Personaje;
 public class MejoraDano extends Item implements Efecto {
     private final double incrementoDano = 0.1;
 
-    public MejoraDano(String nombreItem, String descripcionItem, Integer precioItem, Integer incrementoVida) {
+    public MejoraDano(String nombreItem, String descripcionItem, Integer precioItem, double incrementoDano) {
         super(nombreItem, descripcionItem, precioItem);
     }
 
