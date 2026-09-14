@@ -1,6 +1,5 @@
 package modelo.Items;
 
-import modelo.entidades.Item;
 import modelo.entidades.Personaje;
 
 public class MejoraDano extends Item implements Efecto {

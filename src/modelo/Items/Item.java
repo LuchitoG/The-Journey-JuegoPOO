@@ -1,4 +1,4 @@
-package modelo.entidades;
+package modelo.Items;
 
 public abstract class Item {
     
