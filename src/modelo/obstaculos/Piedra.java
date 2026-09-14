@@ -1,5 +1,6 @@
 package modelo.obstaculos;
 
+import controlador.ControladorSprites;
 import java.awt.image.BufferedImage;
 
 public class Piedra extends Obstaculo {
@@ -7,8 +8,10 @@ public class Piedra extends Obstaculo {
 
     public Piedra(float posicionX, float posicionY, float posicionZ, int ancho, int alto,
             boolean existe, BufferedImage spriteActual, int durabilidad) {
-        super(true, true, true, posicionX, posicionY, posicionZ, ancho, alto, existe, spriteActual);
+        super(true, true, true, posicionX, posicionY, posicionZ, 32, 32, existe,
+                ControladorSprites.getSprite(17, 145, 32, 32));
         this.durabilidad = durabilidad;
+
     }
 
     public void recibirDisparo() {

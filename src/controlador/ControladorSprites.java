@@ -11,7 +11,7 @@ public class ControladorSprites {
 
     static {
         try {
-            masterSheet = ImageIO.read(new File("src/recursos/masterSheet.png"));
+            masterSheet = ImageIO.read(new File("src/recursos/sprite_general.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
