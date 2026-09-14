@@ -1,9 +1,6 @@
 package vista;
 
 import controlador.ControladorTeclado;
-import modelo.Heroe;
-import modelo.ProyectilHeroe;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -12,12 +9,13 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
+import modelo.entidades.Heroe;
+import modelo.entidades.ProyectilHeroe;
 
 public class VistaJuego extends JPanel implements ActionListener {
 

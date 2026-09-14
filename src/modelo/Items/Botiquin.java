@@ -1,4 +1,8 @@
-package modelo;
+package modelo.Items;
+
+import modelo.entidades.Heroe;
+import modelo.entidades.Item;
+import modelo.entidades.Personaje;
 
 public class Botiquin extends Item implements Efecto {
 
