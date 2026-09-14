@@ -1,22 +1,22 @@
-package modelo.Items;
+package modelo.items;
 
-import modelo.entidades.Personaje;
+import modelo.entidades.Heroe;
 
 public class MejoraCadencia extends Item implements Efecto{
     
-    private final int decrmentoCadencia = 2; //cuantos ticks de espera le saca cada vez que se aplica
+    private final int decrementoCadencia = 2; //cuantos ticks de espera le saca cada vez que se aplica
 
     public MejoraCadencia(String nombreItem, String descripcionItem, Integer precioItem){
         super(nombreItem, descripcionItem, precioItem);
     }
     @Override 
-    public void aplicarEfecto(Personaje personaje) {
-        int cadenciaActual = personaje.getCadencia();
-        int nuevaCadencia = cadenciaActual - decrmentoCadencia;
+    public void aplicarEfecto(Heroe heroe) {
+        int cadenciaActual = heroe.getCadencia();
+        int nuevaCadencia = cadenciaActual - decrementoCadencia;
 
         if (nuevaCadencia < 1) {
             nuevaCadencia = 1;
         }
-        personaje.setCadencia(nuevaCadencia);
+        heroe.setCadencia(nuevaCadencia);
     }
 }
