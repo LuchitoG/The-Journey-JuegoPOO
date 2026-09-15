@@ -11,9 +11,17 @@ public class Botiquin extends Item implements Efecto {
         super(nombreItem, descripcionItem, precioItem);
         ControladorSprites.getSprite(33, 81, 16, 16);
     }
-
-       @Override
+    
+    @Override
     public void aplicarEfecto(Heroe heroe) {
-        heroe.curar(incrementoVida);
+        int nuevaVida = heroe.getVida() + incrementoVida;
+
+        if (nuevaVida > heroe.getVidaMaxima()) {
+            nuevaVida = heroe.getVidaMaxima();
+        }
+
+        heroe.setVida(nuevaVida);
     }
+
 }
+

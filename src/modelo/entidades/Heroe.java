@@ -118,15 +118,4 @@ public class Heroe extends Personaje {
         return false;
     }
 
-    public void curar(Integer cantidad){
-        if (cantidad == null || cantidad <= 0){
-            return;
-        }
-        int nuevaVida = getVida() + cantidad;
-        if (nuevaVida > vidaMaxima){
-            nuevaVida = vidaMaxima;
-        }
-        setVida(nuevaVida);
-    }
-
 }
