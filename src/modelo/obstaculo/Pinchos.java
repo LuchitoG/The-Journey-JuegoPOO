@@ -11,7 +11,6 @@ public class Pinchos extends Obstaculo {
         super(false, false, false, posicionX, posicionY, posicionZ, 16, 16, existe,
                 ControladorSprites.getSprite(1, 177, 16, 16));
         this.vidaARestar = vidaARestar;
-        ControladorSprites.getSprite(1, 177, 16, 16);
-    }
 
+    }
 }
