@@ -16,16 +16,15 @@ public class ModeloJuego {
 
     private void inicializarMundo() {
 
-            try {
-            Image fondoInicial = ImageIO.read(new File("src/recursos/sprite_fondo.png")); 
-            
+        try {
+            Image fondoInicial = ImageIO.read(new File("src/recursos/sprite_fondo.png"));
+
             habitacionActual = new Habitacion(
-                fondoInicial, 
-                new ArrayList<>(), 
-                new ArrayList<>(), 
-                new HashMap<>(),   
-                null               
-            );
+                    fondoInicial,
+                    new ArrayList<>(),
+                    new ArrayList<>(),
+                    new HashMap<>(),
+                    null);
         } catch (IOException e) {
             System.out.println("¡ERROR! No se encontró la imagen en la ruta especificada.");
             e.printStackTrace();

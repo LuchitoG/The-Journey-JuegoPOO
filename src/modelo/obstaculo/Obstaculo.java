@@ -1,4 +1,4 @@
-package modelo.obstaculos;
+package modelo.obstaculo;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;

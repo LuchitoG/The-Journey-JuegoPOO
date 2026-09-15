@@ -1,4 +1,4 @@
-package modelo.obstaculos;
+package modelo.obstaculo;
 
 import controlador.ControladorSprites;
 import java.awt.image.BufferedImage;
