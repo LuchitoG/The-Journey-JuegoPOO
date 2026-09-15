@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.Map;
 import modelo.entidades.Enemigo;
-import modelo.obstaculos.Obstaculo;
+import modelo.obstaculo.Obstaculo;
 
 public class Habitacion {
     private Image spriteDeFondo;
