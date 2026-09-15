@@ -1,8 +1,9 @@
 package modelo;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-public abstract class GameObject {
+public abstract class GameObject implements Colisionable {
     private float posicionX;
     private float posicionY;
     private float posicionZ;
@@ -22,6 +23,7 @@ public abstract class GameObject {
         this.spriteActual = spriteActual;
     }
 
+    @Override
     public float getPosicionX() {
         return posicionX;
     }
@@ -30,6 +32,7 @@ public abstract class GameObject {
         this.posicionX = posicionX;
     }
 
+    @Override
     public float getPosicionY() {
         return posicionY;
     }
@@ -46,6 +49,7 @@ public abstract class GameObject {
         this.posicionZ = posicionZ;
     }
 
+    @Override
     public int getAncho() {
         return ancho;
     }
@@ -54,8 +58,22 @@ public abstract class GameObject {
         this.ancho = ancho;
     }
 
+    @Override
     public int getAlto() {
         return alto;
+    }
+
+    @Override
+    public Rectangle getLimites() {
+        return new Rectangle((int) getPosicionX(), (int) getPosicionY(), getAncho(), getAlto());
+    }
+
+    @Override
+    public boolean colisionaCon(Colisionable otro) {
+        if (otro == null) {
+            return false;
+        }
+        return this.getLimites().intersects(otro.getLimites());
     }
 
     public void setAlto(int alto) {

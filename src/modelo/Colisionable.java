@@ -4,9 +4,9 @@ import java.awt.Rectangle;
 
 public interface Colisionable {
 
-    int getX();
+    float getPosicionX();
 
-    int getY();
+    float getPosicionY();
 
     int getAncho();
 

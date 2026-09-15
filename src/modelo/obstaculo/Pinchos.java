@@ -1,4 +1,4 @@
-package modelo.obstaculos;
+package modelo.obstaculo;
 
 import controlador.ControladorSprites;
 import java.awt.image.BufferedImage;
@@ -8,9 +8,9 @@ public class Pinchos extends Obstaculo {
 
     public Pinchos(float posicionX, float posicionY, float posicionZ, int ancho, int alto,
             boolean existe, BufferedImage spriteActual, int vidaARestar) {
-        super(false, false, false, posicionX, posicionY, posicionZ, 16, 16, existe, spriteActual);
+        super(false, false, false, posicionX, posicionY, posicionZ, 16, 16, existe,
+                ControladorSprites.getSprite(1, 177, 16, 16));
         this.vidaARestar = vidaARestar;
-        ControladorSprites.getSprite(1, 177, 16, 16);
-    }
 
+    }
 }

@@ -1,6 +1,7 @@
-package modelo.obstaculos;
+package modelo.obstaculo;
 
 import controlador.ControladorSprites;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class Piedra extends Obstaculo {
@@ -12,6 +13,24 @@ public class Piedra extends Obstaculo {
                 ControladorSprites.getSprite(17, 145, 32, 32));
         this.durabilidad = durabilidad;
 
+    }
+
+    @Override
+    public Rectangle getLimites() {
+        /*         
+        int hitboxX = (int) getPosicionX() + 4; //Desplaza la hitbox a la derecha
+        int hitboxY = (int) getPosicionY() + 10; // desplaza la hitbox hacia abajo
+        int hitboxAncho = getAncho() - 8; // reduce el ancho de la hitbox
+        int hitboxAlto = getAlto() - 10;  // reduce el alto de hitbox
+        */
+
+        // mismo tamano que el sprite
+        int hitboxX = (int) getPosicionX();
+        int hitboxY = (int) getPosicionY();
+        int hitboxAncho = getAncho();
+        int hitboxAlto = getAlto();
+
+        return new Rectangle(hitboxX, hitboxY, hitboxAncho, hitboxAlto);
     }
 
     public void recibirDisparo() {

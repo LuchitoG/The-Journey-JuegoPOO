@@ -1,4 +1,4 @@
-package modelo.items;
+package modelo.item;
 
 import controlador.ControladorSprites;
 import modelo.entidades.Heroe;
