@@ -19,7 +19,7 @@ public class Heroe extends Personaje {
         super(nombre, vida, velocidad, cadencia, dano, posicionX, posicionY, 32, 32); // heredacion
         ControladorSprites.getSprite(1, 225, 32, 32);
 
-        if (vidaMaxima <= 0 || vidaMaxima > 250) {
+        if (vidaMaxima == null || vidaMaxima <= 0 || vidaMaxima > 250) {
             throw new IllegalArgumentException("vida maxima invalida algo rompiste");
         }
         if (mana <= 0 || mana > 100) {
@@ -39,7 +39,7 @@ public class Heroe extends Personaje {
             return null;
         }
         // si no se toca una tecla no hago nada xD
-        if (!teclado.isDispararArriba() && !teclado.isDispararAbajo() & !teclado.isDispararIzq()
+        if (!teclado.isDispararArriba() && !teclado.isDispararAbajo() && !teclado.isDispararIzq()
                 && !teclado.isDispararDere()) {
             return null;
         }
@@ -117,4 +117,16 @@ public class Heroe extends Personaje {
         }
         return false;
     }
+
+    public void curar(Integer cantidad){
+        if (cantidad == null || cantidad <= 0){
+            return;
+        }
+        int nuevaVida = getVida() + cantidad;
+        if (nuevaVida > vidaMaxima){
+            nuevaVida = vidaMaxima;
+        }
+        setVida(nuevaVida);
+    }
+
 }

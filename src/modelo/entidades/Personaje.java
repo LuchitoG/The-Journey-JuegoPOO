@@ -106,7 +106,6 @@ public abstract class Personaje {
         this.vida = vida;
         return true;
     }
-
     public double getVelocidad() {
         return velocidad;
     }
@@ -230,7 +229,8 @@ public abstract class Personaje {
     }
 
     public boolean estaMuerto() {
-        return vida < 0;
+        return vida <= 0;
     }
+
 
 }
