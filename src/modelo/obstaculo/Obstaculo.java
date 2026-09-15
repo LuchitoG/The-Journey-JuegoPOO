@@ -1,11 +1,9 @@
 package modelo.obstaculo;
 
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import modelo.Colisionable;
 import modelo.GameObject;
 
-public abstract class Obstaculo extends GameObject implements Colisionable {
+public abstract class Obstaculo extends GameObject {
     private boolean bloqueaPersonaje;
     private boolean bloqueaProyectil;
     private boolean destructible;
@@ -17,26 +15,6 @@ public abstract class Obstaculo extends GameObject implements Colisionable {
         this.bloqueaPersonaje = bloqueaPersonaje;
         this.bloqueaProyectil = bloqueaProyectil;
         this.destructible = destructible;
-    }
-
-    @Override
-    public int getX() {
-        return (int) getPosicionX();
-    }
-
-    @Override
-    public int getY() {
-        return (int) getPosicionY();
-    }
-
-    @Override
-    public Rectangle getLimites() {
-        return new Rectangle(getX(), getY(), getAncho(), getAlto());
-    }
-
-    @Override
-    public boolean colisionaCon(Colisionable otro) {
-        return this.getLimites().intersects(otro.getLimites());
     }
 
     public boolean isBloqueaPersonaje() {
