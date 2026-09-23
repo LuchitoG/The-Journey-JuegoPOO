@@ -1,13 +1,15 @@
 package modelo.item;
-
+import java.awt.image.BufferedImage;
 import controlador.ControladorSprites;
 import modelo.entidades.Heroe;
 
 public class MejoraDano extends Item implements Efecto {
     private final double incrementoDano = 0.1;
 
-    public MejoraDano(String nombreItem, String descripcionItem, Integer precioItem) {
-        super(nombreItem, descripcionItem, precioItem);
+    public MejoraDano(String nombreItem, String descripcionItem, Integer precioItem, float posicionX, float posicionY, float posicionZ, int ancho, 
+        int alto, boolean existe, BufferedImage spriteActual) {
+        super(nombreItem, descripcionItem, precioItem, posicionX, posicionY, posicionZ, ancho, 
+     alto, existe, spriteActual);
         ControladorSprites.getSprite(1, 81, 32, 16);
     }
 

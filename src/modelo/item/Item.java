@@ -1,13 +1,20 @@
 package modelo.item;
 
-public abstract class Item {
+import java.awt.image.BufferedImage;
+
+import modelo.GameObject;
+
+public abstract class Item extends GameObject{
 
     private String nombreItem;
     private String descripcionItem;
     //private Integer precio;
 
-    public Item(String nombreItem, String descripcionItem, Integer precio) {
+    public Item(String nombreItem, String descripcionItem, Integer precio, float posicionX, float posicionY, float posicionZ, int ancho, 
+        int alto, boolean existe, BufferedImage spriteActual) {
 
+        super(posicionX, posicionY, posicionZ, alto, ancho, existe, spriteActual);
+    
         if (nombreItem == null || nombreItem.isEmpty() || nombreItem.length() > 30) {
             throw new IllegalArgumentException("Nombre de ITEM invalido");
         }
