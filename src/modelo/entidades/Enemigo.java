@@ -1,15 +1,17 @@
 package modelo.entidades;
 
+import java.awt.image.BufferedImage;
+import modelo.Direccion;
+
 public abstract class Enemigo extends Personaje {
 
     private double probabilidadDrop;
     private Integer manaMinimo;
     private Integer manaMaximo;
 
-    public Enemigo(String nombre, Integer vida, double velocidad, Integer cadencia, Integer dano, Float posicionX,
-            Float posicionY, Integer tamanoHeight, Integer tamanoWidth, double probabilidadDrop, Integer manaMinimo,
+    public Enemigo(float posicionX, float posicionY, float posicionZ, int ancho, int alto, boolean existe, BufferedImage spriteActual, Integer vida, double velocidad, Integer cadencia, Integer dano, Direccion direccion, double probabilidadDrop, Integer manaMinimo,
             Integer manaMaximo) {
-        super(nombre, vida, velocidad, cadencia, dano, posicionX, posicionY, tamanoHeight, tamanoWidth);
+        super(posicionX, posicionY, posicionZ, ancho, alto, existe, spriteActual, vida, velocidad, cadencia, dano, direccion);
         // TODO Auto-generated constructor stub
 
         if (probabilidadDrop < 0.0 || probabilidadDrop > 1.0)
