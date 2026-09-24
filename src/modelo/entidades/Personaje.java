@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.Direccion;
 import modelo.GameObject;
+import modelo.Movible;
 
-public abstract class Personaje extends GameObject{
+public abstract class Personaje extends GameObject implements Movible {
 
     private Integer vida;
     private double velocidad;
@@ -17,7 +18,9 @@ public abstract class Personaje extends GameObject{
     private String sfxMuerte;
     private Direccion direccion;
 
-    public Personaje(float posicionX, float posicionY, float posicionZ, int ancho, int alto, boolean existe, BufferedImage spriteActual, Integer vida, double velocidad, Integer cadencia, Integer dano, Direccion direccion) {
+    public Personaje(float posicionX, float posicionY, float posicionZ, int ancho, int alto, boolean existe,
+            BufferedImage spriteActual, Integer vida, double velocidad, Integer cadencia, Integer dano,
+            Direccion direccion) {
         super(posicionX, posicionY, posicionZ, ancho, alto, existe, spriteActual);
 
         this.vida = vida;
@@ -43,6 +46,14 @@ public abstract class Personaje extends GameObject{
         this.vida = vida;
         return true;
     }
+
+    @Override
+    public void setPosicion(int x, int y) {
+        this.setPosicionX(x);
+        this.setPosicionY(y);
+    }
+
+    @Override
     public double getVelocidad() {
         return velocidad;
     }
@@ -98,8 +109,6 @@ public abstract class Personaje extends GameObject{
      * }
      */
 
-
-
     /*
      * public direccion getDireccion() {
      * return direccion;
@@ -109,7 +118,12 @@ public abstract class Personaje extends GameObject{
      * this.direccion = direccion;
      * }
      */
-
+    // OVERRIDES MOVIBLE
+    @Override
+    public void mover(int deltaX, int deltaY) {
+        this.setPosicionX(this.getPosicionX() + deltaX);
+        this.setPosicionY(this.getPosicionY() + deltaY);
+    }
 
     // METODOS PADRES
 
@@ -124,6 +138,5 @@ public abstract class Personaje extends GameObject{
     public boolean estaMuerto() {
         return vida <= 0;
     }
-
 
 }
