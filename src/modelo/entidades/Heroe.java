@@ -1,7 +1,8 @@
 package modelo.entidades;
 
 import controlador.ControladorSprites;
-import controlador.ControladorTeclado;
+import java.awt.image.BufferedImage;
+import modelo.Direccion;
 
 public class Heroe extends Personaje {
 
@@ -9,14 +10,12 @@ public class Heroe extends Personaje {
     private Integer mana;
 
     // el contador de ticks que hay que esperar para el siguiente disparo
-
     private int contadorCadencia = 0;
 
-    public Heroe(String nombre, Integer vida, double velocidad, Integer cadencia, Integer dano, Float posicionX,
-            Float posicionY,
-            Integer tamanoHeight, Integer tamanoWidth, Integer vidaMaxima, Integer mana) {
+    public Heroe(float posicionX, float posicionY, float posicionZ, int ancho, int alto, boolean existe, BufferedImage spriteActual, Integer vida, double velocidad, Integer cadencia, Integer dano, Direccion direccion, Integer vidaMaxima, Integer mana) {
 
-        super(nombre, vida, velocidad, cadencia, dano, posicionX, posicionY, 32, 32); // heredacion
+        super(posicionX, posicionY, posicionZ, ancho, alto, existe, spriteActual, vida, velocidad, cadencia, dano, direccion);
+
         ControladorSprites.getSprite(1, 225, 32, 32);
 
         if (vidaMaxima == null || vidaMaxima <= 0 || vidaMaxima > 250) {
@@ -32,7 +31,7 @@ public class Heroe extends Personaje {
         this.mana = mana;
     }
 
-    public ProyectilHeroe intentarDisparar(ControladorTeclado teclado) {
+/*     public ProyectilHeroe intentarDisparar(ControladorTeclado teclado) {
         // controla el tiempo entre disparos
         if (contadorCadencia > 0) {
             contadorCadencia--;
@@ -61,27 +60,28 @@ public class Heroe extends Personaje {
         float centroX = getPosicionX() + (getTamanoWidth() / 2f);
         float centroY = getPosicionY() + (getTamanoHeight() / 2f);
 
-        /*
-         * STATS DEL PROYECTIL
-         * luego vemos como aplicamos los powerups porque por ahora solo cambia aca con
-         * constantes
-         * seguro lo unico que hay que hacer es modificar eso dependiendo de las stats
-         * del heroe
-         * porque el heroe tiene stats de la bala que se modifican a cada rato
-         */
+        
+        //STATS DEL PROYECTIL
+        //luego vemos como aplicamos los powerups porque por ahora solo cambia aca con
+        //constantes
+        //seguro lo unico que hay que hacer es modificar eso dependiendo de las stats
+        //del heroe
+        //porque el heroe tiene stats de la bala que se modifican a cada rato
+         
 
         double velocidadBala = 12.0; // <---- se explica solo
         int tamanoBala = 12; // <---- se explica solo
 
         return new ProyectilHeroe(centroX, centroY, velocidadBala, getDano(), dirX, dirY, tamanoBala, tamanoBala);
-    }
+    } 
+*/
 
     public Integer getVidaMaxima() {
         return this.vidaMaxima;
     }
 
     public Boolean setVidaMaxima(Integer vidaMaxima) {
-        if (vidaMaxima <= 0 || vidaMaxima > 250) {
+        if (vidaMaxima <= 0 || vidaMaxima > 200) {
             return false;
         }
         this.vidaMaxima = vidaMaxima;

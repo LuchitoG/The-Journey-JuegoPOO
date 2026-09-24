@@ -1,4 +1,4 @@
-package vista;
+/* package vista;
 
 import controlador.ControladorTeclado;
 import java.awt.Color;
@@ -118,4 +118,4 @@ public class VistaJuego extends JPanel implements ActionListener {
         }
         repaint();
     }
-}
+} */
